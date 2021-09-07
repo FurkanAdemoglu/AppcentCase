@@ -20,7 +20,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
 
     val errorStateLiveData = SingleLiveEvent<String>()
 
-    fun getCitiesByLocation(location:String) {
+    fun getCitiesByLocation(location:String?) {
 
         viewModelScope.launch {
             try {
@@ -28,7 +28,25 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
                 val showList = arrayListOf<weatherLocationItem>()
                 for (showResult in result) {
                     Log.v("Veriler","abcd")
-                    showList.add(showResult[0].copy())
+
+                    showList.add(showResult)
+                }
+                showListMutableLiveData.postValue(showList)
+            } catch (e: Exception) {
+                errorStateLiveData.postValue("Bir hata oluştu")
+                Log.v("hata", "service call error", e)
+            }
+        }
+    }
+
+    fun getCitiesBySearch(cityName:String){
+        viewModelScope.launch {
+            try {
+                val result = ServiceManager.service.getCitiesBySearch(cityName)
+                val showList = arrayListOf<weatherLocationItem>()
+                for (showResult in result) {
+                    Log.v("Veriler","abcd")
+                    showList.add(showResult)
                 }
                 showListMutableLiveData.postValue(showList)
             } catch (e: Exception) {
