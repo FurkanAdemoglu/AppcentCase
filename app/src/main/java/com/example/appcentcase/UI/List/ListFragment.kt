@@ -40,17 +40,14 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         viewModel.getCitiesByLocation("36.96,-122.02")
 
         buttonSearch.setOnClickListener {
-
             val searchKey = editTextInput.text.toString()
             viewModel.getCitiesBySearch(searchKey)
         }
-
         recycler=view.findViewById(R.id.recycler)
         recycler.layoutManager=LinearLayoutManager(context)
         recycler.adapter=adapter
         adapter.setMovieOnClickListener(object : ICityClickListener {
             override fun onClick(city: weatherLocationItem) {
-
                val action=ListFragmentDirections.actionListFragmentToDetailFragment(
                 city.woeid.toString()
                )
@@ -58,7 +55,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             }
         })
         observeViewModel()
-
     }
     private fun observeViewModel() {
         viewModel.showListLiveData.observe(viewLifecycleOwner) {

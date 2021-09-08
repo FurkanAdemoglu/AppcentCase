@@ -27,10 +27,9 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
                 val result = ServiceManager.service.getCitiesByLocation(location)
                 val showList = arrayListOf<weatherLocationItem>()
                 for (showResult in result) {
-                    Log.v("Veriler","abcd")
-
                     showList.add(showResult)
                 }
+                Log.v("showListTwo","$showList")
                 showListMutableLiveData.postValue(showList)
             } catch (e: Exception) {
                 errorStateLiveData.postValue("Bir hata oluştu")

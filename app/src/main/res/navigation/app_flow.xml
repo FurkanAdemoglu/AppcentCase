@@ -21,7 +21,6 @@
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="woeid"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="string" />
     </fragment>
 </navigation>

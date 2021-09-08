@@ -3,7 +3,7 @@ package com.example.appcentcase.Model
 
 import com.google.gson.annotations.SerializedName
 
-data class CityWeather(
+data class cityWeather(
     @SerializedName("consolidated_weather")
     val consolidatedWeather: List<ConsolidatedWeather>,
     @SerializedName("latt_long")
