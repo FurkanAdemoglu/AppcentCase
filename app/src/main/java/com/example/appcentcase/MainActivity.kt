@@ -54,9 +54,9 @@ class MainActivity : AppCompatActivity() {
         fusedLocationClient?.lastLocation!!.addOnCompleteListener(this) { task ->
             if (task.isSuccessful && task.result != null) {
                 lastLocation = task.result
-                //  latitudeText!!.text = latitudeLabel + ": " + (lastLocation)!!.latitude
-                // longitudeText!!.text = longitudeLabel + ": " + (lastLocation)!!.longitude
-                //location=(lastLocation)!!.latitude.toString()+","+(lastLocation)!!.longitude
+               Log.v("Location","$latitudeLabel")
+                Log.v("LocationTwo","$longitudeLabel")
+
                 location="36.96,-122.02"
                 val fragmentManager: FragmentManager = supportFragmentManager
                 val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()

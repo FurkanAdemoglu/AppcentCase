@@ -5,16 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appcentcase.Listeners.ICityClickListener
+import com.bumptech.glide.Glide
 import com.example.appcentcase.Model.ConsolidatedWeather
-import com.example.appcentcase.Model.cityWeather
-import com.example.appcentcase.Model.weatherLocationItem
 import com.example.appcentcase.R
-import com.example.appcentcase.UI.List.ListViewAdapter
-import com.example.appcentcase.databinding.ItemWeatherBinding
-import org.w3c.dom.Text
 
 class DetailViewAdapter: RecyclerView.Adapter<DetailViewAdapter.DetailViewHolder>() {
     var list: List<ConsolidatedWeather>? = null
@@ -46,11 +40,23 @@ class DetailViewAdapter: RecyclerView.Adapter<DetailViewAdapter.DetailViewHolder
             minTemp.text="MinTemp:"+roundedMinTemp
             maxTemp.text="MaxTemp:"+roundedMaxTemp
             theTemp.text="TheTemp:"+roundedTheTemp
-            windSpeed.text="WindSpeed"+roundedSpeed
+            windSpeed.text="WindSpeed:"+roundedSpeed
             humidity.text="Humidity:"+city.humidity
-            predictability.text="Predictability"+city.predictability
-        }
+            predictability.text="Predictability:"+city.predictability
+            when(city.weatherStateName){
+                "Clear"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/c.png").into(image)
+                "Light Cloud"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/lc.png").into(image)
+                "Snow"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/sn.png").into(image)
+                "Sleet"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/sl.png").into(image)
+                "Hail"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/h.png").into(image)
+                "Thunderstorm"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/t.png").into(image)
+                "Heavy Rain"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/hr.png").into(image)
+                "Light Rain"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/lr.png").into(image)
+                "Showers"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/s.png").into(image)
+                "Heavy Cloud"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/hc.png").into(image)
 
+            }
+        }
     }
     override fun getItemCount()=list?.size ?: 0
 }

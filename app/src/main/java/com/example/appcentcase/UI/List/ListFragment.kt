@@ -21,7 +21,6 @@ import com.example.appcentcase.databinding.FragmentListBinding
 
 
 class ListFragment : Fragment(R.layout.fragment_list) {
-    private lateinit var _binding: FragmentListBinding
     private val viewModel: ListViewModel by viewModels()
     private var adapter=ListViewAdapter()
     private lateinit var recycler:RecyclerView
@@ -32,13 +31,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         super.onViewCreated(view, savedInstanceState)
         editTextInput = view.findViewById(R.id.input)
         buttonSearch = view.findViewById(R.id.button)
-
        // val bundle = arguments
         //val message = bundle?.getString("message")
        // Log.v("Fragment","$message")
-
         viewModel.getCitiesByLocation("36.96,-122.02")
-
         buttonSearch.setOnClickListener {
             val searchKey = editTextInput.text.toString()
             viewModel.getCitiesBySearch(searchKey)
@@ -49,7 +45,8 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         adapter.setMovieOnClickListener(object : ICityClickListener {
             override fun onClick(city: weatherLocationItem) {
                val action=ListFragmentDirections.actionListFragmentToDetailFragment(
-                city.woeid.toString()
+                city.woeid.toString(),
+                   city.title
                )
                 findNavController().navigate(action)
             }
@@ -65,8 +62,4 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         }
         viewModel.errorStateLiveData.observe(this) {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-        }
-    }
-
-
-}
+        } } }

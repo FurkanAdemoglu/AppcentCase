@@ -22,5 +22,9 @@
         <argument
             android:name="woeid"
             app:argType="string" />
+        <argument
+            android:name="cityName"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

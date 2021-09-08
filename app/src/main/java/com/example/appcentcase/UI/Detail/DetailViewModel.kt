@@ -15,12 +15,8 @@ import java.lang.Exception
 class DetailViewModel(application: Application) : AndroidViewModel(application) {
     private val showListMutableLiveData = MutableLiveData<List<ConsolidatedWeather>>()
     val showListLiveData: LiveData<List<ConsolidatedWeather>> = showListMutableLiveData
-
     val errorStateLiveData = SingleLiveEvent<String>()
-
-
     fun getCityWeather(woeid:Int) {
-
         viewModelScope.launch {
             try {
                 val result = ServiceManager.service.getWeatherCity(woeid)
@@ -32,7 +28,4 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
             } catch (e: Exception) {
                 errorStateLiveData.postValue("Bir hata oluştu")
                 Log.v("hata", "service call error", e)
-            }
-        }
-    }
-}
+            } } } }

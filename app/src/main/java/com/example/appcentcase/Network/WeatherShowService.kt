@@ -16,4 +16,5 @@ interface WeatherShowService {
 
     @GET("location/{woeid}/")
     suspend fun getWeatherCity(@Path("woeid") woeid:Int):cityWeather
+
 }
