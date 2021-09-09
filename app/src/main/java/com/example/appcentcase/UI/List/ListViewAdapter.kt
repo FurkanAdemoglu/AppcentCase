@@ -25,11 +25,11 @@ class ListViewAdapter : RecyclerView.Adapter<ListViewAdapter.ListViewHolder>(){
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val containerCardView = itemView.findViewById<CardView>(R.id.containerCardView)
         val textViewName = itemView.findViewById<TextView>(R.id.name)
-        val textViewDistance=itemView.findViewById<TextView>(R.id.genre)
+        val textViewDistance=itemView.findViewById<TextView>(R.id.distance)
         fun bind(city: weatherLocationItem,listener: ICityClickListener?) {
             containerCardView.setOnClickListener { listener?.onClick(city) }
             textViewName.text = city.title
-            textViewDistance.text="Distance"+city.distance.toString()
+            textViewDistance.text="Distance:"+city.distance.toString()
         }
 
     }

@@ -55,8 +55,7 @@ class DetailViewAdapter: RecyclerView.Adapter<DetailViewAdapter.DetailViewHolder
                 "Showers"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/s.png").into(image)
                 "Heavy Cloud"->Glide.with(itemView.context).load("https://www.metaweather.com/static/img/weather/png/hc.png").into(image)
 
-            }
-        }
-    }
+            } } }
+
     override fun getItemCount()=list?.size ?: 0
 }
